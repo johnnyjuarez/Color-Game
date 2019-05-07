@@ -19,6 +19,16 @@ h1 {
     font-size: 200%;
 }
 
+@media screen and (max-width: 430px){
+    h1{
+        font-size: 1.5em;
+    }
+    #colorDisplay {
+        font-size: 1em;
+        text-decoration: underline;
+    }
+}
+
 #message {
     display: inline-block;
     width: 20%;
