@@ -1,7 +1,8 @@
-body { 
+body {
     background-color: #232323;
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
 }
 
 h1 {
@@ -10,23 +11,21 @@ h1 {
     text-transform: uppercase;
     font-weight: normal;
     line-height: 1.1;
-    background-color: steelblue;
+    background-color: #CCDDD3;
     margin: 0;
     padding: 20px 0;
 }
 
-#colorDisplay{
-    font-size: 200%;
+#colorDisplay {
+    font-size: 2em;
+    color: White;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    display: block;
 }
 
-@media screen and (max-width: 430px){
-    h1{
-        font-size: 1.5em;
-    }
-    #colorDisplay {
-        font-size: 1em;
-        text-decoration: underline;
-    }
+#correct {
+    margin-right: 20%;
 }
 
 #message {
@@ -46,9 +45,9 @@ h1 {
     float: left;
     margin: 1.66%;
     border-radius: 5%;
-    transition: background-color .6s;
-    -webkit-transition: background-color .6s;
-    -moz-transition: background-color .6s;
+    transition: background-color .4s;
+    -webkit-transition: background-color .4s;
+    -moz-transition: background-color .4s;
 }
 
 #stripe {
@@ -58,8 +57,12 @@ h1 {
 }
 
 .selected {
+    color: #B48B7D;
+    background: #CCDDD3;
+}
+
+.score {
     color: white;
-    background: steelblue;
 }
 
 button {
@@ -70,7 +73,7 @@ button {
     letter-spacing: 1px;
     height: 100%;
     font-weight: 700;
-    color: steelblue;
+    color: #B48B7D;
     outline: none;
     transition: all 0.3s;
     -webkit-transition: all 0.3s;
@@ -78,6 +81,27 @@ button {
 }
 
 button:hover {
-    color: white;
-    background: steelblue;
+    color: #B48B7D;
+    background: #CCDDD3;
+}
+
+@media screen and (max-width: 430px) {
+    h1 {
+        font-size: 1.5em;
+    }
+
+    #colorDisplay {
+        font-size: 1.25em;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        margin-top: 40px;
+    }
+
+    button {
+        font-size: 0.75em;
+        letter-spacing: 0;
+        font: 300;
+        margin: 0 2%;
+    }
+
 }

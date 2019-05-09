@@ -3,7 +3,10 @@ var colors = [];
 var pickedColor;
 var squares = document.querySelectorAll(".square");
 var colorDisplay = document.getElementById("colorDisplay");
-var messageDisplay = document.querySelector("#message");
+var correct = document.getElementById("correct");
+var correctScore = 0;
+var wrong = document.getElementById("wrong");
+var wrongScore = 0;
 var h1 = document.querySelector("h1");
 var resetButton = document.querySelector("#reset");
 var modeButtons = document.querySelectorAll(".mode");
@@ -27,13 +30,15 @@ function setupSquares() {
       var clickedColor = this.style.backgroundColor;
       // compare color to pickedColor
       if (clickedColor === pickedColor) {
-        messageDisplay.textContent = "Correct!";
         changeColors(clickedColor);
         h1.style.backgroundColor = clickedColor;
         resetButton.textContent = "Play Again?";
+        correctScore++;
+        correct.textContent = "Correct: " + correctScore;
       } else {
         this.style.backgroundColor = "#232323";
-        messageDisplay.textContent = "Try Again";
+        wrongScore++;
+        wrong.textContent = "Wrong: " + wrongScore;
       }
     });
   }
@@ -44,10 +49,18 @@ function setupModeButton() {
     modeButtons[i].addEventListener("click", function() {
       modeButtons[0].classList.remove("selected");
       modeButtons[1].classList.remove("selected");
+      modeButtons[2].classList.remove("selected");
       this.classList.add("selected");
-      this.textContent === "Easy"
-        ? (numberOfSquares = 3)
-        : (numberOfSquares = 6);
+      if (this.textContent === "Easy") {
+        numberOfSquares = 3;
+      } else if (this.textContent === "Normal") {
+        numberOfSquares = 6;
+      } else {
+        numberOfSquares = 9;
+      }
+      // this.textContent === "Easy"
+      //   ? (numberOfSquares = 3)
+      //   : (numberOfSquares = 6);
       reset();
     });
   }
@@ -59,10 +72,9 @@ function reset() {
   // pick a new color from array
   pickedColor = pickColor();
   // change colorDisplay to match pickedColor
-  colorDisplay.textContent = pickedColor;
+  colorDisplay.textContent = "Color Value: " + pickedColor;
   resetButton.textContent = "New Colors";
-  // change messageDisplay to empty
-  messageDisplay.textContent = "";
+
   // change colors of squares
   for (var i = 0; i < squares.length; i++) {
     if (colors[i]) {
@@ -73,14 +85,14 @@ function reset() {
     }
   }
   // set h1 backgorund back to body background
-  h1.style.backgroundColor = "steelblue";
+  h1.style.backgroundColor = "#CCDDD3";
 }
 
 resetButton.addEventListener("click", function() {
   reset();
 });
 
-colorDisplay.textContent = pickedColor;
+colorDisplay.textContent = "Color Value: " + pickedColor;
 
 function changeColors(color) {
   // loop through all squares
